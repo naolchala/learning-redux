@@ -63,6 +63,7 @@
   background: transparent;
   padding: 15px;
   transition: all 0.3s;
+  border-bottom: 2px solid #ffffff;
 }
 .show .tabBar button:hover {
   border-radius: 4px 4px 0 0;
@@ -71,10 +72,15 @@
 .show .tabBar button.active {
   border-bottom: 2px solid #f26e26;
 }
+.show .List {
+  overflow: hidden;
+}
 .show .List .listItem {
   padding: 10px;
   background: #f5f5ff;
   cursor: pointer;
+  animation: list-enter 300ms ease;
+  transition: all 300ms ease-in-out;
 }
 .show .List .listItem label {
   display: flex;
@@ -90,6 +96,15 @@
 }
 .show .List .listItem.finished {
   background-color: white;
+}
+
+@keyframes list-enter {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 /*# sourceMappingURL=/src.b0ce6175.css.map */

@@ -33259,7 +33259,7 @@ var _shallowEqual = _interopRequireDefault(require("./utils/shallowEqual"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _batch.setBatch)(_reactBatchedUpdates.unstable_batchedUpdates);
-},{"./components/Provider":"../node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"../node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"../node_modules/react-redux/es/components/Context.js","./connect/connect":"../node_modules/react-redux/es/connect/connect.js","./hooks/useDispatch":"../node_modules/react-redux/es/hooks/useDispatch.js","./hooks/useSelector":"../node_modules/react-redux/es/hooks/useSelector.js","./hooks/useStore":"../node_modules/react-redux/es/hooks/useStore.js","./utils/batch":"../node_modules/react-redux/es/utils/batch.js","./utils/reactBatchedUpdates":"../node_modules/react-redux/es/utils/reactBatchedUpdates.js","./utils/shallowEqual":"../node_modules/react-redux/es/utils/shallowEqual.js"}],"../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./components/Provider":"../node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"../node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"../node_modules/react-redux/es/components/Context.js","./connect/connect":"../node_modules/react-redux/es/connect/connect.js","./hooks/useDispatch":"../node_modules/react-redux/es/hooks/useDispatch.js","./hooks/useSelector":"../node_modules/react-redux/es/hooks/useSelector.js","./hooks/useStore":"../node_modules/react-redux/es/hooks/useStore.js","./utils/batch":"../node_modules/react-redux/es/utils/batch.js","./utils/reactBatchedUpdates":"../node_modules/react-redux/es/utils/reactBatchedUpdates.js","./utils/shallowEqual":"../node_modules/react-redux/es/utils/shallowEqual.js"}],"../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -33291,7 +33291,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -33326,12 +33326,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/index.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/Components/Data/Actions/ActionType.js":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/Components/Data/Actions/ActionType.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33459,15 +33459,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var filterData = function filterData(data, filter) {
   switch (filter) {
-    case 'all':
+    case "all":
       return data;
 
-    case 'finished':
+    case "finished":
       return data.filter(function (data) {
         return data.finished === true;
       });
 
-    case 'unfinished':
+    case "unfinished":
       return data.filter(function (data) {
         return data.finished === false;
       });
@@ -33480,14 +33480,12 @@ var ShowTask = function ShowTask() {
     return state;
   });
 
-  var _useState = (0, _react.useState)('all'),
+  var _useState = (0, _react.useState)("all"),
       _useState2 = _slicedToArray(_useState, 2),
       filter = _useState2[0],
       setFilter = _useState2[1];
 
-  (0, _react.useEffect)(function () {
-    data = filterData(data, filter);
-  }, [filter]);
+  var filtered = filterData(data, filter);
 
   var updateToggle = function updateToggle(id) {
     dispatch((0, _Actions.Toggle_complete)(id));
@@ -33498,20 +33496,23 @@ var ShowTask = function ShowTask() {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "tabBar"
   }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "".concat(filter === "all" ? "active " : null),
     onClick: function onClick() {
-      return setFilter('all');
+      return setFilter("all");
     }
   }, "All"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "".concat(filter === "unfinished" ? "active " : null),
     onClick: function onClick() {
-      return setFilter('unfinished');
+      return setFilter("unfinished");
     }
   }, "UnFinished"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "".concat(filter === "finished" ? "active " : null),
     onClick: function onClick() {
-      return setFilter('finished');
+      return setFilter("finished");
     }
   }, "Completed")), /*#__PURE__*/_react.default.createElement("div", {
     className: "List"
-  }, data.length === 0 ? /*#__PURE__*/_react.default.createElement("p", null, "No Data") : data.map(function (task) {
+  }, filtered.length === 0 ? /*#__PURE__*/_react.default.createElement("p", null, "No Data") : filtered.map(function (task) {
     return /*#__PURE__*/_react.default.createElement(ListItem, {
       key: task.id,
       id: task.id,
@@ -33636,7 +33637,7 @@ var ROOT = document.querySelector("#root");
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
   store: _index.default
 }, /*#__PURE__*/_react.default.createElement(App, null)), ROOT);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./Components/AddTask":"../src/Components/AddTask.jsx","./Components/ShowTask":"../src/Components/ShowTask.jsx","./Components/Data/Store/index":"../src/Components/Data/Store/index.js","react-redux":"../node_modules/react-redux/es/index.js","./index.scss":"../src/index.scss"}],"../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./Components/AddTask":"../src/Components/AddTask.jsx","./Components/ShowTask":"../src/Components/ShowTask.jsx","./Components/Data/Store/index":"../src/Components/Data/Store/index.js","react-redux":"../node_modules/react-redux/es/index.js","./index.scss":"../src/index.scss"}],"../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -33664,7 +33665,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50177" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36141" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -33840,5 +33841,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../c/Users/home/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../src/index.jsx"], null)
+},{}]},{},["../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../src/index.jsx"], null)
 //# sourceMappingURL=/src.b0ce6175.js.map
